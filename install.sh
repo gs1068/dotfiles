@@ -40,7 +40,11 @@ done
 
 echo ""
 echo "=== Linking .config ==="
-link "$DOTFILES_DIR/.config" "$HOME/.config"
+mkdir -p "$HOME/.config"
+for dir in "$DOTFILES_DIR"/.config/*/; do
+  dirname="$(basename "$dir")"
+  link "$dir" "$HOME/.config/$dirname"
+done
 
 echo ""
 echo "=== Done ==="
