@@ -4,6 +4,7 @@ case $- in
 esac
 
 OSH_THEME="agnoster"
+DEFAULT_USER=$(whoami)
 
 OMB_USE_SUDO=true
 
