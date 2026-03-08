@@ -14,6 +14,9 @@ abbr add --force tat="tmux a -t"
 abbr add --force ts="tig status"
 abbr add --force l="lazygit"
 abbr add --force s="serpl"
+abbr add --force cl="claude"
+abbr add --force cld="claude --dangerously-skip-permissions"
+abbr add --force cldc="claude --dangerously-skip-permissions --continue"
 
 echo "=== abbr registered ==="
 abbr list
