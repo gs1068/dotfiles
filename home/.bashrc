@@ -1,10 +1,12 @@
 export LANG=ja_JP.UTF-8
 
 export PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:$(go env GOPATH)/bin
+if command -v go &>/dev/null; then
+  PATH=$PATH:$(go env GOPATH)/bin
+fi
 
-source '/home/gs1068/.config/bash/oh-my-bash.bash'
-source '/home/gs1068/.config/bash/peco.bash'
+source "$HOME/.config/bash/oh-my-bash.bash"
+source "$HOME/.config/bash/peco.bash"
 
 # direnv
 eval "$(direnv hook bash)"
@@ -23,7 +25,10 @@ alias k="kubectl"
 alias tnew="tmux new-session -s"
 alias ta="tmux a -t"
 alias ts="tig status"
-if command -v exa >/dev/null; then
+if command -v eza &>/dev/null; then
+  alias ll="eza -l -g --icons"
+  alias lla="ll -a"
+elif command -v exa &>/dev/null; then
   alias ll="exa -l -g --icons"
   alias lla="ll -a"
 else

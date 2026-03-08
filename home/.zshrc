@@ -1,25 +1,28 @@
-export PATH=/opt/homebrew/bin:$PATH
-export PATH="/opt/homebrew/sbin:$PATH"
+# PATH
+if [[ "$(uname)" == "Darwin" ]]; then
+  export PATH=/opt/homebrew/bin:$PATH
+  export PATH="/opt/homebrew/sbin:$PATH"
+  export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+fi
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 eval "$(sheldon source)"
 eval "$(rbenv init -)"
-eval "$(direnv hook zsh)" # for circus
+eval "$(direnv hook zsh)"
 
-########function##########
+# functions
 source ~/.config/zsh/peco.zsh
 source ~/.config/zsh/ghq.zsh
 source ~/.config/zsh/p10k.zsh
 source ~/.config/zsh/startuptime.zsh
-########function##########
 
-export GOROOT=$(go1.24.3 env GOROOT)
-export PATH=$GOROOT/bin:$PATH
-
-# CIRCUS_BACKEND_V2_PAT は .envrc や 1password CLI 等で管理してください
+# Go
+if command -v go &>/dev/null; then
+  export GOROOT=$(go env GOROOT)
+  export PATH=$GOROOT/bin:$PATH
+fi
 
 # コマンドのスペルを訂正
 setopt correct
@@ -37,9 +40,7 @@ alias ta="tmux a"
 alias tat="tmux a -t"
 alias ts="tig status"
 alias l="lazygit"
-alias c="chezmoi"
-alias s=" serpl"
-alias t="terraform"
+alias s="serpl"
 if [[ $(command -v eza) ]]; then
     alias ll="eza -l -g --icons"
     alias lla="ll -a"

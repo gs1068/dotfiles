@@ -3,7 +3,6 @@ name = gs1068
 email = genta.otias@gmail.com
 [core]
 pager = delta
-# autocrlf = input # windowsのための設定
 [delta]
 navigate = true
 side-by-side = true
@@ -26,13 +25,9 @@ pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 fc = "!git fetch origin $(git rev-parse --abbrev-ref HEAD)"
 s = status
 br = branch
-# open = "!hub browse"
 rs = restore
 [ghq]
-# macos
 root = ~/repositories
-# windows
-# root = C:/Users/gs1068/repositories
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
