@@ -1,0 +1,19 @@
+# System files
+.DS_Store
+
+# Configuration directories
+.config/configstore
+.config/gcloud
+.config/go
+.config/iterm2
+.config/karabiner
+.config/nextjs-nodejs
+.config/yarn
+.config/coc
+.config/github-copilot
+
+# Applications and tools
+hub
+kubectl.sha256
+nvim.appimage
+snyk-macos

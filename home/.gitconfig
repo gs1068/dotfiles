@@ -1,0 +1,40 @@
+[user]
+name = gs1068
+email = genta.otias@gmail.com
+[core]
+pager = delta
+# autocrlf = input # windowsのための設定
+[delta]
+navigate = true
+side-by-side = true
+line-numbers = true
+[color]
+status = auto
+diff = auto
+branch = auto
+interactive = auto
+grep = auto
+ui = auto
+[alias]
+a = add
+d = diff
+co = checkout
+cm = commit -m
+l = log -p
+ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+fc = "!git fetch origin $(git rev-parse --abbrev-ref HEAD)"
+s = status
+br = branch
+# open = "!hub browse"
+rs = restore
+[ghq]
+# macos
+root = ~/repositories
+# windows
+# root = C:/Users/gs1068/repositories
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
