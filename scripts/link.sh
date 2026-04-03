@@ -34,5 +34,7 @@ echo "=== Linking .config ==="
 mkdir -p "$HOME/.config"
 for dir in "$DOTFILES_DIR"/.config/*/; do
   dirname="$(basename "$dir")"
+  # Alfred は同期フォルダ機能で直接参照するため、symlinkは不要
+  [ "$dirname" = "Alfred.alfredpreferences" ] && continue
   link "$dir" "$HOME/.config/$dirname"
 done
