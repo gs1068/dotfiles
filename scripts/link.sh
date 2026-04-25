@@ -30,6 +30,14 @@ for file in "$DOTFILES_DIR"/home/.*; do
 done
 
 echo ""
+echo "=== Linking .claude ==="
+mkdir -p "$HOME/.claude"
+link "$DOTFILES_DIR/.claude/settings.json" "$HOME/.claude/settings.json"
+if [ -d "$DOTFILES_DIR/.claude/skills" ]; then
+  link "$DOTFILES_DIR/.claude/skills" "$HOME/.claude/skills"
+fi
+
+echo ""
 echo "=== Linking .config ==="
 mkdir -p "$HOME/.config"
 for dir in "$DOTFILES_DIR"/.config/*/; do

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.store.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Bash(sudo:*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code タスクが完了しました\" with title \"Claude Code\" sound name \"Glass\"'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code アクション待ちです\" with title \"Claude Code\" sound name \"Glass\"'"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
+  },
+  "language": "日本語",
+  "voiceEnabled": true
+}
