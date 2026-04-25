@@ -2,30 +2,6 @@
 
 shell script ベースのシンプルな dotfiles 管理。`install.sh` を実行するだけでセットアップが完了します。
 
-## 構成
-
-```
-dotfiles/
-├── install.sh           # エントリーポイント
-├── scripts/
-│   └── link.sh          # シンボリックリンク作成
-├── home/                # ~/直下に配置するドットファイル
-│   ├── .zshrc
-│   ├── .bashrc
-│   ├── .gitconfig
-│   └── .gitignore
-├── .config/             # ~/.config/ にリンクする設定群
-│   ├── nvim/            # Neovim
-│   ├── tmux/            # tmux
-│   ├── zsh/             # zsh 関連関数
-│   ├── sheldon/         # zsh プラグインマネージャー
-│   ├── git/             # git グローバル ignore
-│   ├── bash/            # bash 設定 (Linux)
-│   ├── powershell/      # PowerShell 設定 (Windows)
-│   └── scoop/           # scoop 設定 (Windows)
-└── .gitignore
-```
-
 ## セットアップ
 
 ### macOS / Linux
@@ -38,10 +14,14 @@ cd ~/repositories/dotfiles
 
 `install.sh` は以下を行います:
 
-- `home/` 内のドットファイルを `~/` にシンボリックリンク
-- `.config/` 内の各ディレクトリを `~/.config/` にシンボリックリンク
-- 既存ファイルがあればタイムスタンプ付きでバックアップ
-- 既に正しいリンクが張られていればスキップ（べき等）
+1. **依存パッケージのインストール** (`scripts/deps.sh`) — Homebrew, Brewfile, oh-my-bash
+2. **シンボリックリンクの作成** (`scripts/link.sh`):
+   - `home/` 内のドットファイルを `~/` にリンク
+   - `.claude/settings.json` と `.claude/skills/` を `~/.claude/` にリンク
+   - `.codex/skills` を `~/.codex/` にリンク（Codex インストール済みの場合）
+   - `.config/` 内の各ディレクトリを `~/.config/` にリンク
+   - 既存ファイルがあればタイムスタンプ付きでバックアップ、既に正しいリンクならスキップ（べき等）
+3. **zsh-abbr の登録** (`scripts/setup-abbr.zsh`) — zsh 利用可能な場合のみ
 
 ### Windows
 
@@ -49,26 +29,6 @@ Git Bash (MINGW/MSYS) で `./install.sh` を実行してください。
 Windows 固有の設定（`core.autocrlf`, `ghq.root`）は自動で適用されます。
 
 PowerShell の詳細は [Windows セットアップガイド](.config/powershell/README.md) を参照してください。
-
-## 設定ファイルの編集
-
-シンボリックリンクなので、リポジトリ内のファイルを編集すればそのまま反映されます。
-
-```bash
-# .zshrc を編集した場合
-source ~/.zshrc
-
-# .gitconfig, tmux, nvim などはファイル保存で即反映
-```
-
-## 主な設定内容
-
-| ツール | 設定 |
-|--------|------|
-| zsh | sheldon (プラグイン管理), Powerlevel10k (テーマ), peco (履歴検索), ghq (リポジトリ管理) |
-| Neovim | telescope, neo-tree, bufferline, VSCode 連携対応 |
-| tmux | prefix: `C-t`, vim キーバインド, マウス有効, macOS クリップボード対応 |
-| git | delta (diff), エイリアス (`g ps`, `g pl`, `g s` 等) |
 
 ## Powerlevel10k フォント
 

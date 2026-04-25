@@ -3,13 +3,20 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+echo "=== Installing dependencies ==="
 source "$DOTFILES_DIR/scripts/deps.sh"
+
+echo ""
 source "$DOTFILES_DIR/scripts/link.sh"
 
 # zsh-abbr のセットアップ（zshが利用可能な場合）
 if command -v zsh &>/dev/null; then
   echo ""
+  echo "=== Setting up zsh-abbr ==="
   zsh "$DOTFILES_DIR/scripts/setup-abbr.zsh"
+else
+  echo ""
+  echo "=== Skipping zsh-abbr (zsh not found) ==="
 fi
 
 # Windows の場合、gitconfig を動的に設定

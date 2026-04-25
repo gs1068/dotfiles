@@ -27,10 +27,8 @@ alias ta="tmux a -t"
 alias ts="tig status"
 if command -v eza &>/dev/null; then
   alias ll="eza -l -g --icons"
-  alias lla="ll -a"
-elif command -v exa &>/dev/null; then
-  alias ll="exa -l -g --icons"
-  alias lla="ll -a"
+  alias lla="eza -l -g --icons -a"
 else
   alias ll="ls -la"
+  alias lla="ls -la"
 fi
