@@ -38,6 +38,12 @@ if [ -d "$DOTFILES_DIR/.claude/skills" ]; then
 fi
 
 echo ""
+echo "=== Linking .codex ==="
+if [ -d "$HOME/.codex" ] && [ -d "$DOTFILES_DIR/.claude/skills" ]; then
+  link "$DOTFILES_DIR/.claude/skills" "$HOME/.codex/skills"
+fi
+
+echo ""
 echo "=== Linking .config ==="
 mkdir -p "$HOME/.config"
 for dir in "$DOTFILES_DIR"/.config/*/; do
