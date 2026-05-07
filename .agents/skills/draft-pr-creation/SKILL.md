@@ -1,6 +1,9 @@
 ---
 name: draft-pr-creation
-description: PR を作成する際に、テンプレートがあれば必ず使用し、常にドラフト状態で作成する。
+description: >-
+  PR を作成する際に、テンプレートがあれば必ず使用し、常にドラフト状態で作成する。
+  TRIGGER when: PR作成、gh pr create、プルリクエスト作成、「PR作って」「PRを出して」「PR作成して」等のPR作成指示。
+  ALWAYS use this skill instead of directly running gh pr create.
 ---
 
 # Draft PR Creation
@@ -13,7 +16,7 @@ description: PR を作成する際に、テンプレートがあれば必ず使�
 
 ## テンプレートの探索
 
-PR 作成前に以下の順で確認し、**最初に見つかったもの**を使用する（見つかった時点で残りの探索は不要）:
+PR 作成前に Glob ツールでファイルの存在を確認し、以下の順で**最初に見つかったもの**を使用する（見つかった時点で残りの探索は不要）:
 
 1. `.github/pull_request_template.md`
 2. `.github/PULL_REQUEST_TEMPLATE.md`
