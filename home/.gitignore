@@ -17,3 +17,6 @@ hub
 kubectl.sha256
 nvim.appimage
 snyk-macos
+
+# yomiyasu の検査記録
+.yomiyasu/
