@@ -1,3 +1,6 @@
 .DS_Store
 *.bak.*
 .agents/skills/.system/
+*.bak
+.agents/skills/.trash/
+.agents/skills/synced/

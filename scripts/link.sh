@@ -32,7 +32,8 @@ done
 echo ""
 echo "=== Linking .claude ==="
 mkdir -p "$HOME/.claude"
-link "$DOTFILES_DIR/.claude/settings.json" "$HOME/.claude/settings.json"
+# settings.json はツールが書き換えるため symlink にせず、共通設定をマージする
+bash "$DOTFILES_DIR/scripts/claude-settings.sh" apply
 if [ -d "$DOTFILES_DIR/.claude/skills" ]; then
   link "$DOTFILES_DIR/.claude/skills" "$HOME/.claude/skills"
 fi
